@@ -1,26 +1,23 @@
-<!-- <div v-for="quiz in quizes" :key="quiz.id" class="card">
-        <img :src="quiz.img" alt="">
-        <div class="card-text">
-          <h2>{{ quiz.name }}</h2>
-          <p>{{ quiz.questions.length }}</p>
-        </div>
-      </div>  -->
-
 <script setup>
 import { defineProps } from 'vue';
+import { useRouter } from "vue-router"
+
+const router = useRouter();
 
 const { quiz } = defineProps(["quiz"])
+
 
 </script>
 
 <template>
-    <div class="card">
+    <div @click="router.push(`quiz/${quiz.id}`)" class="card">
         <img :src="quiz.img" alt="">
         <div class="card-text">
             <h2>{{ quiz.name }}</h2>
 
             <p>{{ quiz.questions.length }} questions</p>
         </div>
+
     </div>
 </template>
 
